@@ -51,9 +51,9 @@ except configparser.ParsingError:
 
     NUMBER_OF_COINS = 10000.0
     INITIAL_COIN_HOLDER = '''-----BEGIN PUBLIC KEY-----
-    MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEofGBl+ldHaybl1JKCfJarla9uEWk
-    fwRHMMp1H5yHbcj1GivtKBSRcNVoOMZg18guZquf50pNH2WAtnWz4vVWJQ==
-    -----END PUBLIC KEY-----'''
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEuSrsfeylNxIPzxpu+QKYrQDkYdIH
+o+YH0RMq3YoONeDzjc1XdGv0t7FUjf1ArfzD3amhmBf+ZWX82XKhKJ8QRg==
+-----END PUBLIC KEY-----'''
 
 
 def sha256_hash(*args):

@@ -21,8 +21,9 @@ class Transaction:
             hash_of_transaction = self.generate_hash()
             verifier = DSS.new(ECC.import_key(self.sender), STANDARD_FOR_SIGNATURES)
             try:
-                verifier.verify(hash_of_transaction, self.signature.encode())
+                verifier.verify(hash_of_transaction, eval(self.signature))
             except ValueError:
+                print("not valid")
                 return False
 
             # check if the receiver and sender are valid (if it's a point on the elliptic curve):

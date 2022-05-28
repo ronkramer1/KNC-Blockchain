@@ -21,10 +21,10 @@ class Wallet:
         self.transaction_pool = []
         self.proposed_blocks = []
 
-    def sign_transaction(self, receiver, amount, nft=None):
+    def sign_transaction(self, receiver, amount):
         sender = self.public_key.export_key(format=PUBLIC_KEY_FORMAT)
         fee = amount * FEE_CONSTANT
-        transaction_hash = sha256_hash(nft, sender, receiver, amount, fee)
+        transaction_hash = sha256_hash(sender, receiver, amount, fee)
         signer = DSS.new(self.private_key, STANDARD_FOR_SIGNATURES)
         signature = str(signer.sign(transaction_hash))
         return signature
@@ -35,11 +35,11 @@ class Wallet:
         signature = str(signer.sign(block_hash))
         return signature
 
-    def make_transaction(self, receiver, amount, nft=None):
+    def make_transaction(self, receiver, amount):
         sender = self.public_key.export_key(format=PUBLIC_KEY_FORMAT)
         fee = amount * FEE_CONSTANT
         if self.get_balance() >= amount + fee:
-            transaction_hash = sha256_hash(nft, sender, receiver, amount, fee)
+            transaction_hash = sha256_hash(sender, receiver, amount, fee)
             signer = DSS.new(self.private_key, STANDARD_FOR_SIGNATURES)
             signature = str(signer.sign(transaction_hash))
             transaction = Transaction(receiver, sender, amount, signature)

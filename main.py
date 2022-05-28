@@ -72,7 +72,7 @@ class Main(qtw.QMainWindow):
             else:
                 private_key_file.write(self.wallet.private_key.export_key(format=PRIVATE_KEY_FORMAT,
                                                                           protection=PRIVATE_KEY_PROTECTION))
-        self.enter_main_menu()
+        self.request_missing_blocks()
 
     def create_wallet_with_private_key(self):
         """gets protected private key from user, a  password, and if they match, calls request_missing_blocks"""
@@ -89,7 +89,6 @@ class Main(qtw.QMainWindow):
                 with open(f"storage/encrypted private key.txt", 'w') as secret_key_file:
                     secret_key_file.write(protected_secret_key)
                 self.request_missing_blocks()
-                self.enter_main_menu()
             except ValueError:
                 qtw.QMessageBox.critical(None, 'Fail',
                                          "password doesn't match the protected private key that was provided.")
